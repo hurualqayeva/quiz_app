@@ -101,7 +101,7 @@ class _QuizQuestionsPageState extends State<QuizQuestionsPage> {
             TextButton(
               onPressed: () {
                 Navigator.of(context).pop();
-                Navigator.pop(context); // Pop the QuizQuestionsPage
+                Navigator.pop(context); 
               },
               child: Text('OK'),
             ),

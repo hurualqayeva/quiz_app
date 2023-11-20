@@ -17,7 +17,7 @@ class _RegisterPageState extends State<RegisterPage> {
     if (value == null || value.isEmpty) {
       return 'Please enter your email';
     }
-    // Add additional email validation logic if needed
+ 
     return null;
   }
 
@@ -25,7 +25,7 @@ class _RegisterPageState extends State<RegisterPage> {
     if (value == null || value.isEmpty) {
       return 'Please enter your password';
     }
-    // Add additional password validation logic if needed
+   
     return null;
   }
 
@@ -38,11 +38,11 @@ class _RegisterPageState extends State<RegisterPage> {
         password: _passwordController.text,
       );
 
-      // Show success dialog
+ 
       _showRegistrationSuccessDialog();
     } catch (e) {
       print("Error: $e");
-      // Handle registration failure (show error dialog, etc.)
+
       _showRegistrationErrorDialog();
     }
   }
@@ -92,7 +92,7 @@ void _showRegistrationErrorDialog() {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.transparent, // Set background color to transparent
+      backgroundColor: Colors.transparent, 
       body: Container(
         decoration: const  BoxDecoration(
           gradient: LinearGradient(
@@ -148,12 +148,12 @@ void _showRegistrationErrorDialog() {
                 SizedBox(height: 8),
                 TextButton(
                   onPressed: () {
-                    // Navigate to the login page
+              
                     Navigator.pop(context);
                   },
                   child: Text(
                     'Already have an account? Login',
-                    style: TextStyle(color: Colors.white), // Set text color to white
+                    style: TextStyle(color: Colors.white), 
                   ),
                 ),
               ],

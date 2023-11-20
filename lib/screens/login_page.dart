@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:quiz_app/screens/register_page.dart';
 import '../services/firebase_auth.dart';
 import '../widgets/custom_text_field.dart';
-import 'quiz_screen.dart'; // Import the QuizScreen file
+import 'quiz_screen.dart'; 
 
 class LoginPage extends StatefulWidget {
   @override
@@ -21,7 +21,7 @@ class _LoginPageState extends State<LoginPage> {
     if (value == null || value.isEmpty) {
       return 'Please enter your email';
     }
-    // Add additional email validation logic if needed
+
     return null;
   }
 
@@ -29,7 +29,7 @@ class _LoginPageState extends State<LoginPage> {
     if (value == null || value.isEmpty) {
       return 'Please enter your password';
     }
-    // Add additional password validation logic if needed
+   
     return null;
   }
 
@@ -42,14 +42,14 @@ class _LoginPageState extends State<LoginPage> {
         password: _passwordController.text,
       );
 
-      // Navigate to the QuizScreen after successful login
+      
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => QuizScreen()),
       );
     } catch (e) {
       print("Error: $e");
-      // Handle login failure (show error message, etc.)
+ 
       _showLoginErrorDialog();
     }
   }
@@ -106,14 +106,14 @@ void _showLoginErrorDialog() {
                     controller: _emailController,
                     labelText: 'Email',
                     validator: _emailValidator,
-                    isSmall: true, // Pass a flag to indicate smaller size
+                    isSmall: true, 
                   ),
                   CustomTextField(
                     controller: _passwordController,
                     labelText: 'Password',
                     obscureText: true,
                     validator: _passwordValidator,
-                    isSmall: true, // Pass a flag to indicate smaller size
+                    isSmall: true, 
                   ),
                   SizedBox(height: 16),
                 ElevatedButton(
@@ -133,7 +133,7 @@ void _showLoginErrorDialog() {
                   SizedBox(height: 8),
                   TextButton(
                     onPressed: () {
-                      // Navigate to the registration page
+            
                       Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => RegisterPage()),

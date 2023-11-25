@@ -3,6 +3,8 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:quiz_app/models/model.dart';
+import 'package:flutter_html/flutter_html.dart';
+import 'package:quiz_app/screens/quiz_result_page.dart';
 
 class QuizQuestionsPage extends StatefulWidget {
   final String selectedCategory;
@@ -90,7 +92,7 @@ class _QuizQuestionsPageState extends State<QuizQuestionsPage> {
 
   void showQuizResult() {
     int correctCount = calculateCorrectAnswers();
-    
+
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -102,6 +104,21 @@ class _QuizQuestionsPageState extends State<QuizQuestionsPage> {
               onPressed: () {
                 Navigator.of(context).pop();
                 Navigator.pop(context); // Pop the QuizQuestionsPage
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => QuizResultPage(
+                      quizQuestions: quizQuestions,
+                      selectedAnswers: selectedAnswers,
+                    ),
+                  ),
+                );
+              },
+              child: Text('See Correct/Incorrect Answers'),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
               },
               child: Text('OK'),
             ),
@@ -166,20 +183,31 @@ class _QuizQuestionsPageState extends State<QuizQuestionsPage> {
                 style: TextStyle(fontSize: 16, color: Colors.white),
               ),
               SizedBox(height: 16),
-              Text(
-                quizQuestions[currentQuestionIndex].question,
-                style: TextStyle(fontSize: 18, color: Colors.white),
+              Html(
+                data: quizQuestions[currentQuestionIndex].question,
+                style: {
+                  "html": Style(
+                    color: Colors.white,
+                    fontSize: FontSize(18),
+                  ),
+                },
               ),
               SizedBox(height: 16),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: quizQuestions[currentQuestionIndex].options.map((option) {
+                  bool isCorrect = option == quizQuestions[currentQuestionIndex].correctAnswer;
+                  bool isSelected = selectedAnswers[currentQuestionIndex] == option;
+
                   return RadioListTile<String>(
-                    title: Text(
-                      option,
-                      style: TextStyle(
-                        color: Colors.white,
-                      ),
+                    title: Html(
+                      data: option,
+                      style: {
+                        "html": Style(
+                          color: 
+                              Colors.white,
+                        ),
+                      },
                     ),
                     activeColor: Colors.blue,
                     value: option,
@@ -193,19 +221,21 @@ class _QuizQuestionsPageState extends State<QuizQuestionsPage> {
                 }).toList(),
               ),
               SizedBox(height: 16),
-               ElevatedButton(
-  child: Text(
-    'Next Question',
-    style: TextStyle(fontSize: 18, color: Colors.white),
-  ),
-  style: ElevatedButton.styleFrom(
-    primary: Colors.blue,
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(8.0),
-    ),
-  ), onPressed: () {goToNextQuestion(); },
-),
-
+              ElevatedButton(
+                child: Text(
+                  'Next Question',
+                  style: TextStyle(fontSize: 18, color: Colors.white),
+                ),
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.blue,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                ),
+                onPressed: () {
+                  goToNextQuestion();
+                },
+              ),
             ],
           ),
         ),
@@ -213,3 +243,11 @@ class _QuizQuestionsPageState extends State<QuizQuestionsPage> {
     );
   }
 }
+
+
+
+
+
+
+
+

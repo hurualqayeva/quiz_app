@@ -17,7 +17,6 @@ class _RegisterPageState extends State<RegisterPage> {
     if (value == null || value.isEmpty) {
       return 'Please enter your email';
     }
-    // Add additional email validation logic if needed
     return null;
   }
 
@@ -25,7 +24,6 @@ class _RegisterPageState extends State<RegisterPage> {
     if (value == null || value.isEmpty) {
       return 'Please enter your password';
     }
-    // Add additional password validation logic if needed
     return null;
   }
 
@@ -38,11 +36,9 @@ class _RegisterPageState extends State<RegisterPage> {
         password: _passwordController.text,
       );
 
-      // Show success dialog
       _showRegistrationSuccessDialog();
     } catch (e) {
       print("Error: $e");
-      // Handle registration failure (show error dialog, etc.)
       _showRegistrationErrorDialog();
     }
   }
@@ -58,7 +54,8 @@ void _showRegistrationSuccessDialog() {
         actions: <Widget>[
           TextButton(
             onPressed: () {
-              Navigator.of(context).pop();
+              Navigator.of(context).pop(); 
+              Navigator.of(context).pop(); 
             },
             child: Text('OK'),
           ),
@@ -67,6 +64,7 @@ void _showRegistrationSuccessDialog() {
     },
   );
 }
+
 
 void _showRegistrationErrorDialog() {
   showDialog(
@@ -134,7 +132,7 @@ void _showRegistrationErrorDialog() {
                 ElevatedButton(
   onPressed: _registerWithEmailAndPassword,
   child: Text(
-    'Login',
+    'Register',
     style: TextStyle(fontSize: 18, color: Colors.white),
   ),
   style: ElevatedButton.styleFrom(

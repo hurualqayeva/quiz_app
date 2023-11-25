@@ -1,8 +1,6 @@
-// ignore_for_file: use_key_in_widget_constructors
-
 import 'package:flutter/material.dart';
 import 'package:quiz_app/firebase_options.dart';
-import 'package:quiz_app/screens/login_page.dart';
+import 'package:quiz_app/screens/first_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 void main() async {
@@ -21,7 +19,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Quiz App',
-      home: LoginPage(),
+      home: SplashScreen(),
     );
   }
 }

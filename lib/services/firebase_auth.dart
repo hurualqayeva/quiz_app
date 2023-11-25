@@ -1,4 +1,3 @@
-// services/firebase_auth_service.dart
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -14,11 +13,5 @@ class FirebaseAuthService {
     await _auth.createUserWithEmailAndPassword(email: email, password: password);
   }
 
-  Future<void> saveUserAnswers(String userEmail, Map<String, dynamic> userAnswers) async {
-    try {
-      await _firestore.collection('quiz_results').doc(userEmail).set(userAnswers);
-    } catch (e) {
-      print("Error saving user answers: $e");
-    }
-  }
+ 
 }

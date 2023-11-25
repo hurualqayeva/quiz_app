@@ -15,6 +15,7 @@ class QuizResultPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color.fromARGB(255, 37, 55, 83),
       body: Container(
         decoration: BoxDecoration(
           color: Color.fromARGB(255, 37, 55, 83),
@@ -44,7 +45,7 @@ class QuizResultPage extends StatelessWidget {
                   },
                   child: Container(
                     padding: EdgeInsets.all(12),
-                    margin: EdgeInsets.only(bottom: 16),
+                    margin: EdgeInsets.only(bottom: 16), 
                     decoration: BoxDecoration(
                       border: Border.all(
                         color: isCorrect ? Colors.green : Colors.red,
@@ -70,12 +71,15 @@ class QuizResultPage extends StatelessWidget {
                           },
                         ),
                         SizedBox(height: 8),
-                        Text(
-                          isCorrect
-                              ? 'Your answer: ${selectedAnswers[index]} (Correct)'
-                              : 'Your answer: ${selectedAnswers[index]} (Incorrect)',
-                          style: TextStyle(
-                            color: isCorrect ? Colors.green : Colors.red,
+                        Padding(
+                          padding: const EdgeInsets.only(top: 8.0), 
+                          child: Text(
+                            isCorrect
+                                ? ' Your answer: ${selectedAnswers[index]} (Correct)'
+                                : ' Your answer: ${selectedAnswers[index]} (Incorrect)',
+                            style: TextStyle(
+                              color: isCorrect ? Colors.green : Colors.red,
+                            ),
                           ),
                         ),
                         if (!isCorrect)
